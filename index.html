@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mind Map</title>
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+    #mindmap {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+
+<svg id="mindmap"></svg>
+
+<script type="module">
+import { Markmap } from 'https://cdn.jsdelivr.net/npm/markmap-view/+esm'
+import { Transformer } from 'https://cdn.jsdelivr.net/npm/markmap-lib/+esm'
+
+const markdown = `
+# Open Science
+
+## Big Team Science
+- Collaboration across labs
+- Shared tools
+- Large datasets
+
+## Replication Crisis
+- Reproducibility problems
+- Need for transparency
+
+## WEIRD Populations
+- Western samples
+- Limited generalizability
+
+## Open Science Practices
+- Preregistration
+- Open data
+- Registered reports
+`
+
+const transformer = new Transformer()
+const { root } = transformer.transform(markdown)
+
+Markmap.create('#mindmap', null, root)
+</script>
+
+</body>
+</html>
